@@ -1,10 +1,30 @@
 <launch>
 
+<!-- This how it is programmmed in bitBot -->
+
+
+<!-- Set the param that trajectory_execution_manager needs to find the controller plugin -->
+  <param name="moveit_controller_manager" value="moveit_simple_controller_manager/MoveItSimpleControllerManager"/>
+
+  <!-- The rest of the params are specific to this plugin -->
+  <rosparam file="$(find kuka_moveit_config)/config/controllers.yaml"/>
+
+
+<!-- Following is how the code was auto generated -->
   <!-- loads moveit_controller_manager on the parameter server which is taken as argument
     if no argument is passed, moveit_simple_controller_manager will be set -->
-  <arg name="moveit_controller_manager" default="moveit_simple_controller_manager/MoveItSimpleControllerManager" />
-  <param name="moveit_controller_manager" value="$(arg moveit_controller_manager)"/>
+  <!-- <arg name="moveit_controller_manager" default="moveit_simple_controller_manager/MoveItSimpleControllerManager" /> -->
+  <!-- <param name="moveit_controller_manager" value="$(arg moveit_controller_manager)"/> -->
 
   <!-- loads ros_controllers to the param server -->
-  <rosparam file="$(find kuka_moveit_config)/config/ros_controllers.yaml"/>
+  <!-- <rosparam file="$(find kuka_moveit_config)/config/controllers.yaml"/> -->
+  <!-- <param name="use_controller_manager" value="true"/>
+  <param name="trajectory_execution/execution_duration_monitoring" value="true"/> -->
+
+
+  
+
+
 </launch>
+
+

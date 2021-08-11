@@ -53,17 +53,21 @@
     </include>
 
     <!-- CHOMP -->
-    <include ns="chomp" file="$(find kuka_moveit_config)/launch/planning_pipeline.launch.xml">
+    <!-- <include ns="chomp" file="$(find kuka_moveit_config)/launch/planning_pipeline.launch.xml">
       <arg name="pipeline" value="chomp" />
-    </include>
+    </include> -->
 
+
+    <!-- Here the pilz Industrial motion planner was commented out as it is not needed for this -->
     <!-- Pilz Industrial Motion-->
-    <include ns="pilz_industrial_motion_planner" file="$(find moveit_resources_prbt_moveit_config)/launch/planning_pipeline.launch.xml">
+    <!-- <include ns="pilz_industrial_motion_planner" file="$(find moveit_resources_prbt_moveit_config)/launch/planning_pipeline.launch.xml">
       <arg name="pipeline" value="pilz_industrial_motion_planner" />
-    </include>
+    </include> -->
 
+    <!-- in the next line this was the original line  -->
+    <!-- not in ['ompl', 'chomp', 'pilz_industrial_motion_planner'] -->
     <!-- Support custom planning pipeline -->
-    <include if="$(eval arg('pipeline') not in ['ompl', 'chomp', 'pilz_industrial_motion_planner'])"
+    <include if="$(eval arg('pipeline') not in ['ompl'])"
 	     file="$(find kuka_moveit_config)/launch/planning_pipeline.launch.xml">
       <arg name="pipeline" value="$(arg pipeline)" />
     </include>
